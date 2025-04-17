@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Property Listing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>Add Property</h2>
+  <input id="title" placeholder="Title" />
+  <input id="city" placeholder="City" />
+  <input id="description" placeholder="Description" />
+  <input id="houseType" placeholder="House Type" />
+  <input id="bhkType" placeholder="BHK Type" />
+  <input id="area" placeholder="Area (sq ft)" />
+  <input id="furnishingType" placeholder="Furnishing Type" />
+  <input id="facilities" placeholder="Facilities" />
+  <input id="price" placeholder="Price" />
+  <button onclick="addProperty()">Add Property</button>
+
+  <h2>Search</h2>
+  <input id="location" placeholder="Location" />
+  <input id="bhkTypeSearch" placeholder="BHK Type" />
+  <input id="priceMin" placeholder="Min Price" />
+  <input id="priceMax" placeholder="Max Price" />
+  <button onclick="searchProperties()">Search</button>
+
+  <div id="property-results"></div>
+
+  <script src="client.js"></script>
+</body>
+</html>
