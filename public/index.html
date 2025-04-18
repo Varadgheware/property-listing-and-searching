@@ -3,29 +3,88 @@
 <head>
   <title>Property Listing</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
 </head>
 <body>
-  <h2>Add Property</h2>
-  <input id="title" placeholder="Title" />
-  <input id="city" placeholder="City" />
-  <input id="description" placeholder="Description" />
-  <input id="houseType" placeholder="House Type" />
-  <input id="bhkType" placeholder="BHK Type" />
-  <input id="area" placeholder="Area (sq ft)" />
-  <input id="furnishingType" placeholder="Furnishing Type" />
-  <input id="facilities" placeholder="Facilities" />
-  <input id="price" placeholder="Price" />
-  <button onclick="addProperty()">Add Property</button>
+  <nav class="navbar">
+    <div class="nav-brand">PropListing</div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" onclick="showSection('home')">Home</a>
+      <a href="#" class="nav-link" onclick="showSection('contact')">Contact</a>
+    </div>
+  </nav>
 
-  <h2>Search</h2>
-  <input id="location" placeholder="Location" />
-  <input id="bhkTypeSearch" placeholder="BHK Type" />
-  <input id="priceMin" placeholder="Min Price" />
-  <input id="priceMax" placeholder="Max Price" />
-  <button onclick="searchProperties()">Search</button>
+  <div id="home-section" class="section">
+    <div class="hero">
+      <h1>Welcome to Property Listing</h1>
+      <p>Find your dream property or list your property with us</p>
+      <div class="hero-buttons">
+        <button class="hero-btn" onclick="showSection('add-property')">Add Property</button>
+        <button class="hero-btn" onclick="showSection('search-property')">Search Property</button>
+      </div>
+    </div>
+  </div>
 
-  <div id="property-results"></div>
+  <div id="contact-section" class="section" style="display: none;">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <h3>Call Us At: </h3>
+        <p>+91 8767139544</p>
+      </div>
+      <div class="contact-item">
+        <h3> Social Media</h3>
+        <p>Instagram: @proplisting</p>
+        <p>Telegram: @prop_listing</p>
+      </div>
+    </div>
+  </div>
 
+  <div id="add-property-section" class="section" style="display: none;">
+    <h2>Add Property</h2>
+    <input id="title" placeholder="Title" />
+    <input id="city" placeholder="City" />
+    <input id="description" placeholder="Description" />
+    <input id="houseType" placeholder="House Type" />
+    <input id="bhkType" placeholder="BHK Type" />
+    <input id="area" placeholder="Area (sq ft)" />
+    <input id="furnishingType" placeholder="Furnishing Type" />
+    <input id="facilities" placeholder="Facilities" />
+    <input id="price" placeholder="Price" />
+    <button onclick="addProperty()">Add Property</button>
+  </div>
+
+  <div id="search-property-section" class="section" style="display: none;">
+    <h2>Search</h2>
+    <input id="location" placeholder="Location" />
+    <input id="bhkTypeSearch" placeholder="BHK Type" />
+    <input id="priceMin" placeholder="Min Price" />
+    <input id="priceMax" placeholder="Max Price" />
+    <button onclick="searchProperties()">Search</button>
+    <div id="property-results"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
   <script src="client.js"></script>
+  <script>
+    function showSection(sectionId) {
+   
+      document.querySelectorAll('.section').forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      
+      document.getElementById(sectionId + '-section').style.display = 'block';
+      
+      // Update active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if(link.textContent.toLowerCase() === sectionId) {
+          link.classList.add('active');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
